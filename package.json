@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/wdio wdio.conf.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@wdio/local-runner": "^7.4.6",
+    "@wdio/mocha-framework": "^7.4.6",
+    "@wdio/selenium-standalone-service": "^7.4.2",
+    "@wdio/spec-reporter": "^7.4.3",
     "eslint": "^7.24.0",
     "eslint-plugin-wdio": "^7.4.2"
+  },
+  "dependencies": {
+    "@wdio/cli": "^7.4.6"
   }
 }
