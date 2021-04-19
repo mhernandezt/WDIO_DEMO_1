@@ -8,25 +8,14 @@ describe('Intro Test Suite', () => {
 
   beforeEach(() => {
     browser.url('');
+    loginPage.login(email, password);
   });
 
-  /* afterEach(() => {
-    browser.pause(3000);
-  }); */
-
   it('should display correct title', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     assert.strictEqual(introPage.title.getText(), 'Superhero Roster', 'Text is not the same');
   });
 
   it('should display correct image', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     assert.strictEqual(
       introPage.mainImage.getAttribute('src'),
       browser.options.baseUrl + 'images/superhero.png',

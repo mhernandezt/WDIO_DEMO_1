@@ -8,26 +8,15 @@ describe('Header Test Suite', () => {
 
   beforeEach(() => {
     browser.url('');
+    loginPage.login(email, password);
   });
 
-  /* afterEach(() => {
-    browser.pause(3000);
-  }); */
-
   it('should redirect to new site', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     headerPage.linkLink.click();
     assert.strictEqual(browser.getUrl(), 'https://glitchitsystem.com/', 'Link url is not correct');
   });
 
   it('should open wolverine modal', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     headerPage.heroFactsLink.click();
     headerPage.wolverineOption.click();
 
@@ -43,10 +32,6 @@ describe('Header Test Suite', () => {
   });
 
   it('should close wolverine modal', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     headerPage.heroFactsLink.click();
     headerPage.wolverineOption.click();
 
@@ -61,10 +46,6 @@ describe('Header Test Suite', () => {
   });
 
   it('should open spiderman modal', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     headerPage.heroFactsLink.click();
     headerPage.spidermanOption.click();
 
@@ -80,10 +61,6 @@ describe('Header Test Suite', () => {
   });
 
   it('should close spiderman modal', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     headerPage.heroFactsLink.click();
     headerPage.spidermanOption.click();
 
@@ -98,10 +75,6 @@ describe('Header Test Suite', () => {
   });
 
   it('should search for wolverine', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     let text = 'Wolverine';
     headerPage.searchField = text;
     headerPage.searchButton.click();
@@ -111,10 +84,6 @@ describe('Header Test Suite', () => {
   });
 
   it('should error because you did not search for wolverine', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     let text = 'something';
     headerPage.searchField = text;
     headerPage.searchButton.click();
@@ -128,10 +97,6 @@ describe('Header Test Suite', () => {
   });
 
   it('should close the alert', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     let text = 'something';
     headerPage.searchField = text;
     headerPage.searchButton.click();

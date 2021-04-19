@@ -12,13 +12,8 @@ describe('Login Test Suite', () => {
     browser.url('');
   });
 
-  /*   afterEach(() => {
-    browser.pause(3000);
-  }); */
-
   it('should display error when password is missing', () => {
-    loginPage.emailField = email;
-    loginPage.submitButton.click();
+    loginPage.login(email, '');
 
     assert.strictEqual(browser.isAlertOpen(), true, 'Alert is not open');
     assert.strictEqual(browser.getAlertText(), 'Please enter an email and password', 'Alert text is not equal');
@@ -28,8 +23,7 @@ describe('Login Test Suite', () => {
   });
 
   it('should display error when email is missing', () => {
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
+    loginPage.login('', password);
 
     assert.strictEqual(browser.isAlertOpen(), true, 'Alert is not open');
     assert.strictEqual(browser.getAlertText(), 'Please enter an email and password', 'Alert text is not equal');
@@ -39,7 +33,7 @@ describe('Login Test Suite', () => {
   });
 
   it('should display error when email and password are missing', () => {
-    loginPage.submitButton.click();
+    loginPage.login('', '');
 
     assert.strictEqual(browser.isAlertOpen(), true, 'Alert is not open');
     assert.strictEqual(browser.getAlertText(), 'Please enter an email and password', 'Alert text is not equal');
@@ -49,9 +43,7 @@ describe('Login Test Suite', () => {
   });
 
   it('should display error when email is incorrect', () => {
-    loginPage.emailField = 'test@test.com';
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
+    loginPage.login('test@test.com', password);
 
     assert.strictEqual(browser.isAlertOpen(), true, 'Alert is not open');
     assert.strictEqual(browser.getAlertText(), 'Invalid email and password', 'Alert text is not equal');
@@ -61,9 +53,7 @@ describe('Login Test Suite', () => {
   });
 
   it('should display error when password is incorrect', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = 'pass';
-    loginPage.submitButton.click();
+    loginPage.login(email, 'pass');
 
     assert.strictEqual(browser.isAlertOpen(), true, 'Alert is not open');
     assert.strictEqual(browser.getAlertText(), 'Invalid email and password', 'Alert text is not equal');
@@ -73,9 +63,7 @@ describe('Login Test Suite', () => {
   });
 
   it('should display error when password case is incorrect', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password.toUpperCase();
-    loginPage.submitButton.click();
+    loginPage.login(email, password.toUpperCase());
 
     assert.strictEqual(browser.isAlertOpen(), true, 'Alert is not open');
     assert.strictEqual(browser.getAlertText(), 'Invalid email and password', 'Alert text is not equal');
@@ -85,10 +73,7 @@ describe('Login Test Suite', () => {
   });
 
   it('should login with valid email and password', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
+    loginPage.login(email, password);
     assert.strictEqual(loginPage.overlay.isDisplayed(), false, 'Overlay is still displayed');
   });
 
@@ -109,9 +94,7 @@ describe('Login Test Suite', () => {
   });
 
   it('should not remember login credentials', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
+    loginPage.login(email, password);
 
     assert.strictEqual(loginPage.overlay.isDisplayed(), false, 'Overlay is still displayed');
 

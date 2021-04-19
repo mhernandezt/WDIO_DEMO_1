@@ -8,17 +8,10 @@ describe('Roster Test Suite', () => {
 
   beforeEach(() => {
     browser.url('');
+    loginPage.login(email, password);
   });
 
-  /* afterEach(() => {
-    browser.pause(3000);
-  }); */
-
   it('should have default values', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     let title = 'Build Your Superhero Roster:';
     let instructions =
       'Imagine that you are tasked with building a team of Superheros to save the world. We have given you a few heroes to start with. Add as many heroes as you would like to round out your dream team.';
@@ -39,16 +32,19 @@ describe('Roster Test Suite', () => {
   });
 
   it('should add a new hero', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     let herosQuantity = rosterPage.heroList.length + 1;
 
     let hero = 'Bob';
-    rosterPage.addHeroField = hero;
-    rosterPage.submitButton.click();
+    rosterPage.addHero(hero);
 
     assert.strictEqual(rosterPage.heroItem(herosQuantity).getText(), hero, hero + ' text is not the same');
+  });
+
+  it('should create multiple heros', () => {
+    let heros = ['Captain America', 'Hulk', 'Flash', 'Batman', 'Super-Man'];
+    for (let i = 0; i < heros.length; i++) {
+      rosterPage.addHero(heros[i]);
+      assert.strictEqual(rosterPage.heroItem(i + 6).getText(), heros[i], heros[i] + ' text is not the same');
+    }
   });
 });

@@ -8,17 +8,10 @@ describe('Vote Section Test Suite', () => {
 
   beforeEach(() => {
     browser.url('');
+    loginPage.login(email, password);
   });
 
-  /* afterEach(() => {
-    browser.pause(3000);
-  }); */
-
   it('should increment vote', () => {
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
-
     let option = 3;
     //  We need to get the original value before we validate it
     let votes = parseInt(votePage.tableItemVotes(option).getText());

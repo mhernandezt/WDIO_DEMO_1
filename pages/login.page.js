@@ -42,5 +42,11 @@ class LoginPage {
   set passwordField(value) {
     this.passwordField.setValue(value);
   }
+
+  login(email, password) {
+    this.emailField = email;
+    this.passwordField = password;
+    this.submitButton.click();
+  }
 }
 module.exports = new LoginPage();

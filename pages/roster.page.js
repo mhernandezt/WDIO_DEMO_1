@@ -27,6 +27,15 @@ class RosterPage {
     this.addHeroField.setValue(value);
   }
 
+  /**
+   *  Create a new hero
+   * @param {string} hero Hero name
+   */
+  addHero(hero) {
+    this.addHeroField = hero;
+    this.submitButton.click();
+  }
+
   heroItem(option) {
     return $(`#hero-list li:nth-child(${option})`);
   }

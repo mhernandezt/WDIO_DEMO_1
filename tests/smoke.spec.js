@@ -13,10 +13,6 @@ describe('Smoke Test Suite', () => {
     browser.url('');
   });
 
-  /* afterEach(() => {
-    browser.pause(3000);
-  }); */
-
   it('should verify static element are present', () => {
     //  Verify login page elements
     assert.strictEqual(loginPage.headingTitle.isDisplayed(), true, 'loginPage.headingTitle is not displayed');
@@ -36,9 +32,7 @@ describe('Smoke Test Suite', () => {
     );
     assert.strictEqual(loginPage.submitButton.isDisplayed(), true, 'loginPage.submitButton is not displayed');
 
-    loginPage.emailField = email;
-    loginPage.passwordField = password;
-    loginPage.submitButton.click();
+    loginPage.login(email, password);
 
     //  Verify header page elements
     assert.strictEqual(headerPage.homeLink.isDisplayed(), true, 'headerPage.homeLink is not displayed');
